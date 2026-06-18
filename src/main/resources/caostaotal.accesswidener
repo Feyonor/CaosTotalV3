@@ -1,0 +1,5 @@
+accessWidener v2 named
+
+accessible field net/minecraft/entity/LivingEntity maxHealth F
+accessible field net/minecraft/entity/player/PlayerEntity experienceLevel I
+accessible method net/minecraft/entity/player/PlayerEntity addExperience (I)V

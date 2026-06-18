@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "caostaotal",
+  "version": "${version}",
+  "name": "Caos Total V3",
+  "description": "Un mod muy divertido y caótico para jugar con amigos. ¡Explosiones, armas, eventos aleatorios y mucho caos!",
+  "authors": [
+    "Feyonor"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Feyonor/CaosTotalV3",
+    "sources": "https://github.com/Feyonor/CaosTotalV3"
+  },
+  "license": "MIT",
+  "icon": "assets/caostaotal/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.feyonor.caostaotal.CaosTotalMod"
+    ],
+    "client": [
+      "com.feyonor.caostaotal.client.CaosTotalClient"
+    ]
+  },
+  "mixins": [
+    "caostaotal.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "minecraft": "1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

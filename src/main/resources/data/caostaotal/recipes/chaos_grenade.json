@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GTG",
+    "THT",
+    "GTG"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:gunpowder"
+    },
+    "T": {
+      "item": "minecraft:tnt"
+    },
+    "H": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "caostaotal:chaos_grenade",
+    "count": 4
+  }
+}

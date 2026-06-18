@@ -1,0 +1,29 @@
+# Gradle
+.gradle/
+build/
+gradle/
+out/
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+*.code-workspace
+
+# Minecraft
+run/
+.minecraft/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Project
+bin/
+*.jar
+*.class
