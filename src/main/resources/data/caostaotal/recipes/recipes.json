@@ -1,0 +1,37 @@
+```json
+{
+  "crafting_shapeless": [
+    {
+      "name": "chaos_grenade",
+      "result": {
+        "item": "caostaotal:chaos_grenade"
+      },
+      "ingredients": [
+        {
+          "item": "minecraft:tnt"
+        },
+        {
+          "item": "minecraft:redstone"
+        },
+        {
+          "item": "minecraft:diamond"
+        }
+      ]
+    },
+    {
+      "name": "chaos_lighter",
+      "result": {
+        "item": "caostaotal:chaos_lighter"
+      },
+      "ingredients": [
+        {
+          "item": "minecraft:flint_and_steel"
+        },
+        {
+          "item": "minecraft:redstone_block"
+        }
+      ]
+    }
+  ]
+}
+```
