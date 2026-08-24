@@ -10,6 +10,8 @@ import com.feyonor.caostaotal.config.CaosConfig;
 import com.feyonor.caostaotal.events.CaosEventManager;
 import com.feyonor.caostaotal.item.CaosItems;
 import com.feyonor.caostaotal.item.CaosRecipes;
+import com.feyonor.caostaotal.item.CaosBlocks;
+import com.feyonor.caostaotal.dimension.ChaosDimension;
 import com.feyonor.caostaotal.util.PlayerDeathCounter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,16 +22,24 @@ public class CaosTotalMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info("¡Iniciando Caos Total V3!");
+        LOGGER.info("═══════════════════════════════════════");
+        LOGGER.info("⚡ ¡Iniciando Caos Total V3! ⚡");
+        LOGGER.info("═══════════════════════════════════════");
 
         // Cargar configuración
         CaosConfig.load();
+
+        // Registrar bloques
+        CaosBlocks.registerBlocks();
 
         // Registrar items
         CaosItems.registerItems();
 
         // Registrar recetas
         CaosRecipes.registerRecipes();
+
+        // Registrar dimensión
+        ChaosDimension.register();
 
         // Registrar comandos
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
@@ -39,7 +49,7 @@ public class CaosTotalMod implements ModInitializer {
 
         // Eventos del servidor
         ServerLifecycleEvents.SERVER_STARTED.register(server -> {
-            LOGGER.info("Servidor iniciado - Caos Total V3 activo");
+            LOGGER.info("🎮 Servidor iniciado - Caos Total V3 activo");
             CaosEventManager.onServerStart(server);
         });
 
@@ -49,6 +59,8 @@ public class CaosTotalMod implements ModInitializer {
             PlayerDeathCounter.updateAll(server);
         });
 
-        LOGGER.info("Caos Total V3 cargado correctamente!");
+        LOGGER.info("═══════════════════════════════════════");
+        LOGGER.info("✨ ¡Caos Total V3 cargado correctamente! ✨");
+        LOGGER.info("═══════════════════════════════════════");
     }
 }
