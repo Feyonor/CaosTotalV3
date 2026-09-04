@@ -10,10 +10,16 @@ import com.feyonor.caostaotal.config.CaosConfig;
 
 @Mixin(PlayerEntity.class)
 public class PlayerHealthMixin {
-    @Inject(method = "<init>", at = @At("TAIL"))
-    private void onPlayerInit(CallbackInfo ci) {
+    
+    @Inject(method = "tick", at = @At("HEAD"))
+    private void onPlayerTick(CallbackInfo ci) {
         PlayerEntity player = (PlayerEntity)(Object)this;
-        player.setHealth(CaosConfig.PLAYER_MAX_HEALTH);
-        ((LivingEntity)(Object)player).setMaxHealth(CaosConfig.PLAYER_MAX_HEALTH);
+        
+        // Aplicar salud máxima al jugador
+        if (player.getMaxHealth() != CaosConfig.PLAYER_MAX_HEALTH) {
+            player.getAttributeInstance(net.minecraft.entity.attribute.EntityAttributes.GENERIC_MAX_HEALTH)
+                .setBaseValue(CaosConfig.PLAYER_MAX_HEALTH);
+            player.setHealth(CaosConfig.PLAYER_MAX_HEALTH);
+        }
     }
 }
