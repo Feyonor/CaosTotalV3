@@ -5,6 +5,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.CreeperEntity;
+import net.minecraft.entity.TntEntity;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import com.feyonor.caostaotal.config.CaosConfig;
@@ -16,7 +17,7 @@ public class CaosEventManager {
     private static int tickCounter = 0;
 
     public static void onServerStart(MinecraftServer server) {
-        LOGGER.info("Inicializando gestor de eventos caóticos...");
+        LOGGER.info("🎮 Inicializando gestor de eventos caóticos...");
     }
 
     public static void onServerTick(MinecraftServer server) {
@@ -55,14 +56,17 @@ public class CaosEventManager {
         var player = world.getPlayers().get(0);
         Vec3d pos = player.getPos();
 
-        LOGGER.info("¡LLUVIA DE TNT en " + (int)pos.x + ", " + (int)pos.z + "!");
+        LOGGER.info("💣 ¡LLUVIA DE TNT en " + (int)pos.x + ", " + (int)pos.z + "!");
         
         for (int i = 0; i < 20; i++) {
             double x = pos.x + (Math.random() * 50 - 25);
             double y = pos.y + 50;
             double z = pos.z + (Math.random() * 50 - 25);
 
-            var tnt = new net.minecraft.entity.TntEntity(world, x, y, z, null);
+            // Crear entidad TNT correctamente
+            TntEntity tnt = new TntEntity(EntityType.TNT, world);
+            tnt.setPosition(x, y, z);
+            tnt.setFuse(80); // Configura el tiempo de explosión
             world.spawnEntity(tnt);
         }
     }
@@ -75,7 +79,7 @@ public class CaosEventManager {
         var player = world.getPlayers().get(0);
         Vec3d pos = player.getPos();
 
-        LOGGER.info("¡INVASIÓN DE MOBS!");
+        LOGGER.info("👹 ¡INVASIÓN DE MOBS!");
         
         for (int i = 0; i < 15; i++) {
             double x = pos.x + (Math.random() * 40 - 20);
@@ -96,7 +100,7 @@ public class CaosEventManager {
         var player = world.getPlayers().get(0);
         Vec3d pos = player.getPos();
 
-        LOGGER.info("¡METEORITO!");
+        LOGGER.info("☄️ ¡METEORITO!");
         
         // Crear explosión
         world.createExplosion(null, pos.x, pos.y + 50, pos.z, 8.0f, net.minecraft.world.explosion.Explosion.DestructionType.BREAK);
@@ -107,7 +111,7 @@ public class CaosEventManager {
         
         if (world.getPlayers().isEmpty()) return;
 
-        LOGGER.info("¡¡¡REY CREEPER INVOCADO!!!");
+        LOGGER.info("👑 ¡¡¡REY CREEPER INVOCADO!!!");
         
         var player = world.getPlayers().get(0);
         Vec3d pos = player.getPos();
