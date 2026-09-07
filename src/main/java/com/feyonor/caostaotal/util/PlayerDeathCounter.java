@@ -14,6 +14,9 @@ public class PlayerDeathCounter {
         String playerName = player.getName().getString();
         int deaths = deathCounts.getOrDefault(playerName, 0);
         deathCounts.put(playerName, deaths + 1);
+        
+        // Broadcast
+        player.sendMessage(Text.literal("§c☠️ Muertes: " + (deaths + 1)), false);
     }
 
     public static int getDeaths(PlayerEntity player) {
@@ -22,6 +25,7 @@ public class PlayerDeathCounter {
 
     public static void updateAll(MinecraftServer server) {
         // Se puede implementar mostrar contador de muertes aquí
+        // Por ahora solo se registran las muertes
     }
 
     public static void reset() {

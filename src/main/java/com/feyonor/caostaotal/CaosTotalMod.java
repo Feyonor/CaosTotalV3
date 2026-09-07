@@ -8,6 +8,7 @@ import com.feyonor.caostaotal.command.HomeCommand;
 import com.feyonor.caostaotal.command.AdminCommand;
 import com.feyonor.caostaotal.config.CaosConfig;
 import com.feyonor.caostaotal.events.CaosEventManager;
+import com.feyonor.caostaotal.events.PlayerSpawnEventListener;
 import com.feyonor.caostaotal.item.CaosItems;
 import com.feyonor.caostaotal.item.CaosRecipes;
 import com.feyonor.caostaotal.item.CaosBlocks;
@@ -28,6 +29,7 @@ public class CaosTotalMod implements ModInitializer {
 
         // Cargar configuración
         CaosConfig.load();
+        LOGGER.info("✅ Configuración cargada");
 
         // Registrar bloques
         CaosBlocks.registerBlocks();
@@ -41,10 +43,15 @@ public class CaosTotalMod implements ModInitializer {
         // Registrar dimensión
         ChaosDimension.register();
 
+        // Registrar listeners de eventos
+        PlayerSpawnEventListener.register();
+        LOGGER.info("✅ Event listeners registrados");
+
         // Registrar comandos
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             HomeCommand.register(dispatcher);
             AdminCommand.register(dispatcher);
+            LOGGER.info("✅ Comandos registrados");
         });
 
         // Eventos del servidor
